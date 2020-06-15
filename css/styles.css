@@ -95,6 +95,10 @@ section {
     transition: ease 0.3s all;
 }
 
+#navbar__list {
+    padding: 1em;
+}
+
 
 /* Header Styles */
 
