@@ -79,6 +79,7 @@ section {
 .navbar__menu li {
     display: inline-block;
     color: black;
+    padding: 1em;
 }
 
 .navbar__menu .menu__link {
@@ -93,10 +94,6 @@ section {
     background: #333;
     color: #fff;
     transition: ease 0.3s all;
-}
-
-#navbar__list {
-    padding: 1em;
 }
 
 
