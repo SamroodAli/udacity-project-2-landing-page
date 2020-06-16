@@ -35,17 +35,20 @@
 let numSection = 1;
 const navList = document.getElementById('navbar__list');
 const mainBody = document.getElementById('main_body');
+// Add class 'active' to section when near top of viewport
+window.addEventListener(
+    'scroll', () => {
 
-
+    }
+);
 //function to create new sections
 function sectionCreater() {
     const section = document.querySelector('#sectionTemplate');
     const sectionClone = section.content.children[0].cloneNode(true);
-    console.log(sectionClone);
     sectionClone.setAttribute('id', `section${numSection}`);
     sectionClone.querySelector('h2').textContent = `section ${numSection}`;
+    sectionClone.setAttribute('data-nav', `section ${numSection}`);
     section.parentElement.appendChild(sectionClone);
-
 }
 // build the nav
 function sectionTabCreater() {
@@ -53,6 +56,8 @@ function sectionTabCreater() {
     const newli = document.createElement("li");
     newA.href = `#section${numSection}`;
     newli.textContent = `section ${numSection}`;
+    newli.setAttribute('id', `tab${numSection}`);
+    newli.className = "tab";
     numSection++;
     newA.appendChild(newli);
     navList.appendChild(newA);
@@ -70,11 +75,6 @@ function sectionTabCreater() {
         }
     );
 }
-//initial number of sections.
-sectionTabCreater();
-sectionTabCreater();
-sectionTabCreater();
-
 //functionality for new section.
 let newSectionTab = document.getElementById('newSection');
 newSectionTab.addEventListener(
@@ -84,17 +84,27 @@ newSectionTab.addEventListener(
         sectionTabCreater();
     }
 );
-//TO FULFILL REQUIRMENT OF HAVNG 4 SECTIONS
+//funtionality to check active class
+function activeChecker() {
+    const sectionList = document.querySelectorAll('.section');
+    sectionList.forEach(section => {
+        let topDistance = Math.floor(section.getBoundingClientRect().top);
+        section.classList.remove('your-active-class');
+        if (topDistance < 150 && topDistance >= -150) {
+            section.classList.add('your-active-class');
+        }
+    });
+}
+// functionality for making sections active when in viewport
+window.addEventListener(
+    'scroll', () => {
+        activeChecker();
+    }
+)
+
+//TO FULFILL REQUIRMENT OF HAVNG 4 SECTIONS --Loops not used as there are only a few initial sections.
+sectionTabCreater();
+sectionTabCreater();
+sectionTabCreater();
 sectionCreater();
 sectionTabCreater();
-
-// Add class 'active' to section when near top of viewport
-
-
-/**
- * End Main Functions
- * Begin Events
- * 
- */
-
-// Build menu
