@@ -82,6 +82,11 @@ section {
     padding: 1em;
 }
 
+.navbar__menu li:hover {
+    background-color: grey;
+    color: white;
+}
+
 .navbar__menu .menu__link {
     display: block;
     padding: 1em;
@@ -221,7 +226,7 @@ section:nth-of-type(3n + 1) .landing__container::after {
 
 section.your-active-class {
     background: rgb(0, 0, 0);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 100, 1) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
 section.your-active-class .landing__container::before {

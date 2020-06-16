@@ -34,14 +34,18 @@
 // let numSection be th number of sections
 let numSection = 1;
 const navList = document.getElementById('navbar__list');
-const section = document.getElementById('section1');
 const mainBody = document.getElementById('main_body');
+
 
 //function to create new sections
 function sectionCreater() {
-    const sectionClone = section.cloneNode(true);
+    const section = document.querySelector('#sectionTemplate');
+    const sectionClone = section.content.children[0].cloneNode(true);
+    console.log(sectionClone);
     sectionClone.setAttribute('id', `section${numSection}`);
-    mainBody.appendChild(sectionClone);
+    sectionClone.querySelector('h2').textContent = `section ${numSection}`;
+    section.parentElement.appendChild(sectionClone);
+
 }
 // build the nav
 function sectionTabCreater() {
@@ -80,9 +84,11 @@ newSectionTab.addEventListener(
         sectionTabCreater();
     }
 );
+//TO FULFILL REQUIRMENT OF HAVNG 4 SECTIONS
+sectionCreater();
+sectionTabCreater();
 
 // Add class 'active' to section when near top of viewport
-
 
 
 /**
@@ -91,9 +97,4 @@ newSectionTab.addEventListener(
  * 
  */
 
-// Build menu 
-
-// Scroll to section on link click
-
-
-// Set sections as active
+// Build menu
