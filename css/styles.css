@@ -245,3 +245,20 @@ section.your-active-class .landing__container::after {
         transform: rotate(360deg) translate(-1em) rotate(-360deg);
     }
 }
+
+@media(max-width:600px) {
+    body {
+        font-size: 1em;
+    }
+    h1 {
+        font-size: 3em;
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+    .navbar__menu li {
+        display: inline-block;
+        color: black;
+        padding: 0.25em;
+    }
+}
