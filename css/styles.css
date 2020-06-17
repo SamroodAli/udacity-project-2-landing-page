@@ -82,11 +82,6 @@ section {
     padding: 1em;
 }
 
-.navbar__menu li:hover {
-    background-color: grey;
-    color: white;
-}
-
 .navbar__menu .menu__link {
     display: block;
     padding: 1em;

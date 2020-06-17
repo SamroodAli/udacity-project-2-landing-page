@@ -47,7 +47,7 @@ function sectionCreater() {
     const sectionClone = section.content.children[0].cloneNode(true);
     sectionClone.setAttribute('id', `section${numSection}`);
     sectionClone.querySelector('h2').textContent = `section ${numSection}`;
-    sectionClone.setAttribute('data-nav', `section ${numSection}`);
+    sectionClone.classList.add(`section-${numSection}`);
     section.parentElement.appendChild(sectionClone);
 }
 // build the nav
@@ -58,9 +58,11 @@ function sectionTabCreater() {
     newli.textContent = `section ${numSection}`;
     newli.setAttribute('id', `tab${numSection}`);
     newli.className = "tab";
+    newli.classList.add(`section-${numSection}`);
     numSection++;
     newA.appendChild(newli);
     navList.appendChild(newA);
+
     // Scroll to anchor ID using scrollTO event
     newA.addEventListener(
         'click',
@@ -76,13 +78,13 @@ function sectionTabCreater() {
     );
 }
 //functionality for new section.
+function newSection() {
+    sectionCreater();
+    sectionTabCreater();
+}
 let newSectionTab = document.getElementById('newSection');
 newSectionTab.addEventListener(
-    "click",
-    function newSection() {
-        sectionCreater();
-        sectionTabCreater();
-    }
+    "click", newSection
 );
 //funtionality to check active class
 function activeChecker() {
@@ -91,7 +93,16 @@ function activeChecker() {
         let topDistance = Math.floor(section.getBoundingClientRect().top);
         section.classList.remove('your-active-class');
         if (topDistance < 150 && topDistance >= -150) {
-            section.classList.add('your-active-class');
+            let classList = section.classList;
+            const className = classList.item(1);
+            section.classList.add("your-active-class");
+            let group = document.getElementsByClassName(className);
+            group.item(0).style.cssText = "background-color:grey";
+        } else {
+            let classList = section.classList;
+            const className = classList.item(1);
+            let group = document.getElementsByClassName(className);
+            group.item(0).style.cssText = "background-color:white";
         }
     });
 }
@@ -103,8 +114,6 @@ window.addEventListener(
 )
 
 //TO FULFILL REQUIRMENT OF HAVNG 4 SECTIONS --Loops not used as there are only a few initial sections.
-sectionTabCreater();
-sectionTabCreater();
-sectionTabCreater();
-sectionCreater();
-sectionTabCreater();
+for (i = 1; i <= 4; i++) {
+    newSection();
+}
